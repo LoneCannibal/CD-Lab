@@ -12,7 +12,6 @@ bool isSpecialChar(char ch){
 void main(){
     FILE *ptr;
     char ch;
-    //int upper=0, lower=0, numbers=0, special_char=0,spaces=0,total=0;
     int count[6]={0,0,0,0,0,0};
     ptr=fopen("input.txt","r");
     while(fscanf(ptr,"%c",&ch)!=EOF){
