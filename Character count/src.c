@@ -1,6 +1,7 @@
 //Read the number of characters, numbers, special characters, etc from a file
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #include <string.h>
 char special[]="<>,.;/?'|\"[]{})(*&^%$#@!-_=+)";
 char vowels[]="AEIOUaeiou";
@@ -22,6 +23,10 @@ void main(){
     char ch;
     int count[8]={0,0,0,0,0,0,0,0};
     ptr=fopen("input.txt","r");
+    if(ptr==NULL){
+        printf("File not found\n");
+        exit(0);
+    }
     while(fscanf(ptr,"%c",&ch)!=EOF){
         if(ch>='A' && ch<='Z'){
             count[0]++;
