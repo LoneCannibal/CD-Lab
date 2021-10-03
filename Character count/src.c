@@ -30,17 +30,11 @@ void main(){
     while(fscanf(ptr,"%c",&ch)!=EOF){
         if(ch>='A' && ch<='Z'){
             count[0]++;
-            if(isVowel(ch))
-                count[5]++;
-            else
-                count[6]++;
+            isVowel(ch) ? count[5]++ : count[6]++;
         }
         else if((ch>='a' && ch<='z')){
             count[1]++;
-            if(isVowel(ch))
-                count[5]++;
-            else
-                count[6]++;
+            isVowel(ch) ? count[5]++ : count[6]++;
         }
         else if(ch>=48 && ch<=57)
             count[2]++;
