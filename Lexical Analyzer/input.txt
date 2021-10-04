@@ -1,4 +1,6 @@
-main() 
+void main() 
 {
-    int a * b
+    int a = b + c ;
 }
+main2()
+
