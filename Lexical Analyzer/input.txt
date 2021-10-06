@@ -3,5 +3,7 @@ void main()
     int a = b + c ;
     
 }
-main2()
+main2() {
+    string hello ;
+}
 
