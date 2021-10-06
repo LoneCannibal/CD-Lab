@@ -4,9 +4,9 @@
 #include<string.h>
 #include<stdbool.h>
 char OPERATOR[][10]={"<",">","/","*","%","+","-","^","=","==","&&","||"};
-char KEYWORD[][10]={"void","int","char","string","if","return","bool"};
+char KEYWORD[][10]={"void","int","char","string","if","return","bool","const"};
 char UNUSED[][10]={"(",")",";","{","}"};
-char op[20][20] , keyword[20][20] , identifier[20][20] , function[20][20] ;
+char op[20][20] , keyword[20][20] , identifier[20][20] , function[20][20];
 int opCount=0,keywordCount=0,identifierCount=0,functionCount=0;
 void display(char* msg,char k[][20],int count){
     printf("%s: ",msg);

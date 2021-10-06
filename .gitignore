@@ -50,3 +50,7 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+Lexical Analyzer/.vscode/launch.json
+.gitignore
+Lexical Analyzer/.vscode/tasks.json
+Lexical Analyzer/src
