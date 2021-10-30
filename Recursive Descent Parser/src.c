@@ -4,10 +4,7 @@
 #include <string.h>
 int pointer=0,error=0;
 char input[30];
-void Eprime();
-void T();
-void Tprime();
-void F();
+void Eprime(), T(), Tprime(), F(); //Function declerations
 void E(){
     T();
     Eprime();
