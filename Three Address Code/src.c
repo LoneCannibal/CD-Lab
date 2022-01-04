@@ -33,15 +33,16 @@ int main(){
     scanf("%s",input);
     for(int i = 0; i < strlen(input); i++){
         if(!isalpha(input[i])){//If the character is a symbol like /*+- 
-            codes[i][0] = input[i-1];
-            codes[i][1] = input[i];
-            codes[i][2] = input[i+1];
+            codes[codeCount][0] = input[i-1];
+            codes[codeCount][1] = input[i];
+            codes[codeCount][2] = input[i+1];
+            codes[codeCount][3] = '\0';
             //sprintf(codes[codeCount],"%c%c%c\0",input[i-1],input[i],input[i+1]);
             codeCount++;
         }
     }
-    for(int i = 0; i <codeCount; i++)
-        printf("%s\n",codes[i][1]);
+    //for(int i = 0; i <codeCount; i++)
+    //    printf("%c\n",codes[i][1]);
     generate_code('/');
     generate_code('*');
     generate_code('+');
