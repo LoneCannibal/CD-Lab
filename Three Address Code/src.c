@@ -28,16 +28,31 @@ void postfix(){
             if(top==-1 || strcmp(stack,")")==0 || strcmp(stack,"(")==0)//If stack is empty or contains brackets
                 push(input[i]);
             else{
-                
+                if(input[i]==')'){
+                    while(stack[top]!='(')
+                        postfix[len++]=pop();
+                    char ch=pop();
+                }
+                if(precedence(input[i])>precedence(stack[top]))
+                    push(input[i]);
+                else{
+                    while(top!=-1)
+                        postfix[len++]=pop();
+                    push(input[i]);
+                }
             }
         }
+        printf("Stack:%s\n",stack);
     }
+    while(top!=-1)
+        postfix[len++]=pop();
+    printf(postfix);
 }
 int main(){
     printf("Enter the  input string: ");//Eg. z=a+b*c
     scanf("%s",input);
     postfix();
-    evaluate();
+    //evaluate();
     return 0;
 }
  
