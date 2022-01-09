@@ -1,7 +1,7 @@
 //Write a program to implement three address codes and print them
 #include<stdio.h>
 #include<string.h>
-char input[100], stack[100],return_value[10];
+char input[100], stack[100],return_value[100];
 int top=-1;
 void push(char ch){
     top++;
@@ -48,29 +48,43 @@ void postfix(){
         postfix[len++]=pop();
     strcpy(input,postfix);
 }
-char* code(char ch){//Returns values like t0,t1,t2 etc. according to ch value A,B,C, etc.
-    printf("DEBUG%c",ch);
-    return_value[0] = '\0';//Resetting string to empty
-    if(ch>=65 && ch<=90){
-        return_value[0] = 't';
-        return_value[1] = ch-65;}
-    else
-        return_value[0] = ch;
-    return  return_value;
+void replace(int a, int b){
+    char temp[100];
+    int len = 0,i = 0;
+    for(i=0;i<a;i++)
+        temp[len++] = input[i];
+    temp[len++] = (int)b+65;//Converting codeNumber to respective alphabet A,B,C, etc.
+    i = a+3;
+    while(input[i]!='\0'){
+        temp[len++] = input[i];
+        i++;
+    }
+    strcpy(input,temp);
 }
 void evaluate(){
     int codeNumber = 0;
     for(int i=0;i<strlen(input);i++){
         if(!isalpha(input[i])){
-            printf("t%d=%c%c%c\n",codeNumber++,input[i-2],input[i],input[i-1]);
+            printf("t%d=",codeNumber++);
+            if(input[i-2]>=65 && input[i-2]<=90)
+                printf("t%d%c",input[i-2]-65,input[i]);
+            else
+                printf("%c%c",input[i-2],input[i]);
+            if(input[i-1]>=65 && input[i-1]<=90)
+                printf("t%d\n",input[i-1]-65);
+            else
+                printf("%c\n",input[i-1]);
+            replace(i-2,codeNumber-1);
+            if(i-2!=0)
+                i=0;
         }
     }
 }
 int main(){
-    printf("Enter the  input string: ");//Eg. z=a+b*c
+    printf("Enter the  input string: ");//Eg. a+b*c
     scanf("%s",input);
     postfix();
-    printf("%s\n",input);
+    printf("POSTFIX VALUE:%s\n",input);
     evaluate();
     return 0;
 }
