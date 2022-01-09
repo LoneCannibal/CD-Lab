@@ -1,7 +1,7 @@
 //Write a program to implement three address codes and print them
 #include<stdio.h>
 #include<string.h>
-char input[100], stack[100];
+char input[100], stack[100],return_value[10];
 int top=-1;
 void push(char ch){
     top++;
@@ -42,17 +42,36 @@ void postfix(){
                 }
             }
         }
-        printf("Stack:%s\n",stack);
+        //printf("Stack:%s\n",stack);
     }
     while(top!=-1)
         postfix[len++]=pop();
-    printf(postfix);
+    strcpy(input,postfix);
+}
+char* code(char ch){//Returns values like t0,t1,t2 etc. according to ch value A,B,C, etc.
+    printf("DEBUG%c",ch);
+    return_value[0] = '\0';//Resetting string to empty
+    if(ch>=65 && ch<=90){
+        return_value[0] = 't';
+        return_value[1] = ch-65;}
+    else
+        return_value[0] = ch;
+    return  return_value;
+}
+void evaluate(){
+    int codeNumber = 0;
+    for(int i=0;i<strlen(input);i++){
+        if(!isalpha(input[i])){
+            printf("t%d=%c%c%c\n",codeNumber++,input[i-2],input[i],input[i-1]);
+        }
+    }
 }
 int main(){
     printf("Enter the  input string: ");//Eg. z=a+b*c
     scanf("%s",input);
     postfix();
-    //evaluate();
+    printf("%s\n",input);
+    evaluate();
     return 0;
 }
  
